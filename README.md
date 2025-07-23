@@ -1,12 +1,44 @@
-# React + Vite
+# React + Vite + Storybook + Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto foi criado com Vite, React, Storybook e Tailwind CSS, pronto para desenvolvimento moderno de componentes.
 
-Currently, two official plugins are available:
+## Scripts principais
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `npm run dev` — Inicia o servidor de desenvolvimento do React (Vite)
+- `npm run storybook` — Inicia o Storybook para visualizar e documentar componentes
+- `npm run build` — Gera a build de produção do app
 
-## Expanding the ESLint configuration
+## Como rodar o projeto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Rode o app React:
+   ```bash
+   npm run dev
+   ```
+   Acesse: http://localhost:5173/
+3. Rode o Storybook:
+   ```bash
+   npm run storybook
+   ```
+   Acesse: http://localhost:6006/
+
+## Tailwind CSS
+
+O Tailwind já está configurado. Use as classes utilitárias diretamente nos componentes React.
+
+## Estrutura sugerida
+
+- `src/components/` — Componentes reutilizáveis
+- `src/components/Button/` — Exemplo de componente com variações
+- `src/components/Button/Button.stories.jsx` — Story do componente para Storybook
+
+---
+
+Para dúvidas ou sugestões, consulte a documentação oficial de cada ferramenta:
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/)
+- [Storybook](https://storybook.js.org/)
+- [Tailwind CSS](https://tailwindcss.com/)

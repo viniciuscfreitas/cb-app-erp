@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import AppLayout from './components/ui/AppLayout';
+import ClientsPage from './components/clients/ClientsPage';
+import DashboardPage from './components/dashboard/DashboardPage';
+import CalendarPage from './components/agendamentos/CalendarPage';
+import EstoquePage from './components/estoque/EstoquePage';
+import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import PetsPage from './components/pets/PetsPage';
+import { PetShopProvider } from './contexts/PetShopContext.jsx';
+import { EstoqueProvider } from './contexts/EstoqueContext.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <PetShopProvider>
+      <EstoqueProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<AppLayout active="Dashboard"><DashboardPage /></AppLayout>} />
+            <Route path="/dashboard" element={<AppLayout active="Dashboard"><DashboardPage /></AppLayout>} />
+            <Route path="/clientes" element={<AppLayout active="Clientes"><ClientsPage /></AppLayout>} />
+            <Route path="/pets" element={<AppLayout active="Pets"><PetsPage /></AppLayout>} />
+            <Route path="/agendamentos" element={<AppLayout active="Agenda"><CalendarPage /></AppLayout>} />
+            <Route path="/estoque" element={<AppLayout active="Estoque"><EstoquePage /></AppLayout>} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </EstoqueProvider>
+    </PetShopProvider>
+  );
 }
 
-export default App
+export default App;
