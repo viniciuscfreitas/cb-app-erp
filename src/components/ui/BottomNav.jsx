@@ -1,16 +1,6 @@
 import React from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
-
-const navItems = [
-  { label: "Dashboard", icon: "dashboard" },
-  { label: "Clientes", icon: "group" },
-  { label: "Pets", icon: "pets" },
-  { label: "Agenda", icon: "event" },
-  { label: "Estoque", icon: "inventory_2" },
-  { label: "Vendas", icon: "point_of_sale" },
-  { label: "Financeiro", icon: "account_balance_wallet" },
-  { label: "Relatórios", icon: "bar_chart" },
-];
+import { NAV_ITEMS } from '../../constants/moduleColors';
 
 export function BottomNav({ active: activeProp = "Dashboard", onNavigate }) {
   const navigate = useNavigate();
@@ -30,14 +20,27 @@ export function BottomNav({ active: activeProp = "Dashboard", onNavigate }) {
       aria-label="Navegação inferior"
     >
       <ul className="flex justify-around items-center w-full h-full" role="menubar">
-        {navItems.map((item) => {
+        {NAV_ITEMS.map((item) => {
           const isActive = active === item.label;
           return (
             <li key={item.label}>
               <button
                 className={`flex flex-col items-center justify-center flex-1 h-full min-w-[48px] min-h-[48px] px-1 py-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 rounded-md
-                  ${isActive ? "text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-gray-800" : "text-gray-500 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-200 hover:bg-blue-50 dark:hover:bg-gray-800"}
+                  ${isActive ? "text-white" : "text-gray-500 dark:text-gray-300 hover:text-white"}
                 `}
+                style={{
+                  backgroundColor: isActive ? item.color : 'transparent',
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.backgroundColor = item.color;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }
+                }}
                 aria-label={item.label}
                 aria-current={isActive ? "page" : undefined}
                 role="menuitem"

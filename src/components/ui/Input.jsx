@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 /**
  * Componente Input DRY global, responsivo e acessível.
@@ -14,7 +14,7 @@ import React from "react";
  * - helpText: string (opcional)
  * - id: string (opcional)
  */
-export function Input({
+export const Input = forwardRef(({
   label,
   placeholder,
   value,
@@ -28,7 +28,7 @@ export function Input({
   floatingLabel = true,
   onClear,
   ...props
-}) {
+}, ref) => {
   const inputId = id || `input-${label?.replace(/\s+/g, "-").toLowerCase() || Math.random().toString(36).slice(2, 8)}`;
   const isFloating = floatingLabel && !!label;
   const isFilled = value && value.length > 0;
@@ -42,6 +42,7 @@ export function Input({
           </span>
         )}
         <input
+          ref={ref}
           id={inputId}
           type={type}
           className={`w-full rounded-xl border-2 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900/30 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-transparent px-4 py-3 text-sm shadow-sm
@@ -100,4 +101,4 @@ export function Input({
       )}
     </div>
   );
-} 
+}); 

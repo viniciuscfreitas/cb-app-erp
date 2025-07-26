@@ -18,6 +18,7 @@ const CalendarPage = () => {
   const [selectedServices, setSelectedServices] = useState(['all']);
   const [selectedProfessionals, setSelectedProfessionals] = useState(['all']);
   const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [sidebarExpanded, setSidebarExpanded] = useState(true);
 
   // Estado para detectar mobile
   const [isMobile, setIsMobile] = useState(false);
@@ -1228,9 +1229,12 @@ const CalendarPage = () => {
         <div 
           className={`
             fixed top-0 right-0 h-full lg:static lg:h-auto
-            w-full lg:w-72 bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 flex-shrink-0 shadow-lg overflow-hidden
-            transition-[width,transform] duration-300 ease-in-out z-50
-            ${sidebarVisible ? 'translate-x-0 lg:w-72' : 'translate-x-full lg:translate-x-0 lg:w-0 lg:overflow-hidden'}
+            bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 flex-shrink-0 shadow-lg overflow-hidden
+            transition-all duration-300 ease-in-out z-50
+            ${sidebarVisible 
+              ? `translate-x-0 lg:translate-x-0 ${sidebarExpanded ? 'w-72' : 'w-16'}`
+              : 'translate-x-full lg:translate-x-0 lg:w-0 lg:overflow-hidden'
+            }
           `}
           role="complementary"
           aria-label="Painel lateral do calendário"
@@ -1244,6 +1248,8 @@ const CalendarPage = () => {
             selectedProfessionals={selectedProfessionals}
             onProfessionalToggle={handleProfessionalToggle}
             professionals={professionals}
+            expanded={sidebarExpanded}
+            setExpanded={setSidebarExpanded}
           />
         </div>
       )}

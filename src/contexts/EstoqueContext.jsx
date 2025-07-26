@@ -6,7 +6,7 @@ const initialState = {
   produtos: [
     {
       id: 1,
-      codigo: 'RACAO001',
+      codigo: '7891234567890',
       nome: 'Ração Premium Cães',
       categoriaId: 1,
       subcategoria: 'Ração Seca',
@@ -30,7 +30,7 @@ const initialState = {
     },
     {
       id: 2,
-      codigo: 'SHAMP002',
+      codigo: '7891234567891',
       nome: 'Shampoo para Gatos',
       categoriaId: 2,
       subcategoria: 'Shampoo',
@@ -54,7 +54,7 @@ const initialState = {
     },
     {
       id: 3,
-      codigo: 'BRINQ003',
+      codigo: '7891234567892',
       nome: 'Brinquedo Interativo',
       categoriaId: 3,
       subcategoria: 'Interativos',
@@ -78,7 +78,7 @@ const initialState = {
     },
     {
       id: 4,
-      codigo: 'COLEI004',
+      codigo: '7891234567893',
       nome: 'Coleira Ajustável',
       categoriaId: 5,
       subcategoria: 'Coleiras',
